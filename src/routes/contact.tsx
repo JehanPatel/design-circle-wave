@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { useState } from "react";
+import { DraggablePill } from "@/components/DraggablePill";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,11 +16,18 @@ export const Route = createFileRoute("/contact")({
 });
 
 const FAQS = [
-  { q: "Is it free to join?", a: "Always. The WhatsApp groups, events, gallery — all free. We sometimes charge for workshops and merch to keep the lights on." },
-  { q: "I'm not a 'designer designer'. Can I still join?", a: "Yes. Illustrators, animators, ceramicists, type nerds, photographers, students, hobbyists, the chronically curious — all welcome." },
-  { q: "My city isn't listed. What now?", a: "Email leads@thedesignspace.in. If you're up for hosting one meetup, you're already a Spark. We'll send you the playbook." },
-  { q: "Do you do brand partnerships?", a: "Selectively. We don't run banner ads. We do collaborate on workshops, zines, and events with brands we genuinely like." },
+  { q: "Is it free to join?", a: "Always. WhatsApp groups, events, gallery — all free. We sometimes charge for workshops and merch to keep the lights on." },
+  { q: "I'm not a 'designer designer'. Can I still join?", a: "Yes. Illustrators, animators, ceramicists, type nerds, photographers, students, hobbyists — all welcome." },
+  { q: "My city isn't listed. What now?", a: "Email leads@thedesignspace.in. If you're up for hosting one meetup, you're already a Spark." },
+  { q: "Do you do brand partnerships?", a: "Selectively. No banner ads. We collab on workshops, zines, and events with brands we genuinely like." },
   { q: "Can I sponsor an event?", a: "Yes — drop us a line at hello@thedesignspace.in with what you have in mind." },
+];
+
+const STICKIES = [
+  { label: "hello@thedesignspace.in", sub: "general", color: "bg-acid", x: 20, y: 30, r: -5 },
+  { label: "leads@thedesignspace.in", sub: "city leads", color: "bg-hot text-paper", x: 260, y: 80, r: 4 },
+  { label: "press@thedesignspace.in", sub: "press / partners", color: "bg-cobalt text-paper", x: 60, y: 220, r: 3 },
+  { label: "Bandra West, Mumbai", sub: "HQ", color: "bg-paper", x: 280, y: 240, r: -3 },
 ];
 
 function ContactPage() {
@@ -27,10 +35,12 @@ function ContactPage() {
 
   return (
     <Layout>
-      <section className="border-b-2 border-ink bg-ink text-paper">
-        <div className="mx-auto max-w-[1400px] px-4 py-20 sm:px-8">
-          <div className="font-mono text-xs uppercase tracking-widest text-acid">§ Contact · Talk to us</div>
-          <h1 className="mt-4 font-display text-[14vw] leading-[0.85] md:text-[10rem]">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-ink text-paper">
+        <div className="halftone absolute inset-0 opacity-10" />
+        <div className="relative mx-auto max-w-[1400px] px-4 py-20 sm:px-8">
+          <div className="font-mono text-xs uppercase tracking-widest text-acid">// talk to us</div>
+          <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[10rem]">
             Say <span className="font-serif italic normal-case text-hot">something.</span>
           </h1>
           <p className="mt-6 max-w-2xl font-serif text-2xl">
@@ -39,99 +49,102 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="border-b-2 border-ink">
-        <div className="mx-auto grid max-w-[1400px] gap-0 md:grid-cols-[1fr_1.4fr]">
-          {/* Details */}
-          <div className="border-b-2 border-ink p-10 md:border-b-0 md:border-r-2 sm:p-14">
-            <div className="font-mono text-xs uppercase tracking-widest text-hot">§ Reach</div>
-            <h2 className="mt-3 font-display text-4xl uppercase">The Details</h2>
-
-            <div className="mt-8 space-y-6 font-serif text-lg">
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">General</div>
-                <a href="mailto:hello@thedesignspace.in" className="block underline decoration-hot decoration-4 underline-offset-4">hello@thedesignspace.in</a>
+      {/* DETAILS + FORM as collage, not strip */}
+      <section className="relative overflow-hidden py-20">
+        <div className="halftone absolute -right-32 top-20 h-[400px] w-[400px] rounded-full opacity-15" />
+        <div className="relative mx-auto max-w-[1400px] px-4 sm:px-8">
+          <div className="grid gap-16 md:grid-cols-2">
+            {/* left: scattered draggable contact stickies */}
+            <div>
+              <div className="mb-3 font-mono text-xs uppercase tracking-widest text-hot">// the details · grab them</div>
+              <div className="relative h-[420px]">
+                {STICKIES.map((s, i) => (
+                  <DraggablePill
+                    key={s.label}
+                    initialX={s.x}
+                    initialY={s.y}
+                    rotate={s.r}
+                    zHint={5 + i}
+                    className={`brut-border brut-shadow w-[260px] ${s.color} p-4`}
+                  >
+                    <div className="font-mono text-[10px] uppercase tracking-widest opacity-70">{s.sub}</div>
+                    <div className="mt-1 font-display text-lg uppercase break-words">{s.label}</div>
+                  </DraggablePill>
+                ))}
               </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">City Leads</div>
-                <a href="mailto:leads@thedesignspace.in" className="block underline decoration-hot decoration-4 underline-offset-4">leads@thedesignspace.in</a>
-              </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Press / Partnerships</div>
-                <a href="mailto:press@thedesignspace.in" className="block underline decoration-hot decoration-4 underline-offset-4">press@thedesignspace.in</a>
-              </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">HQ</div>
-                <p>Bandra West, Mumbai 400050<br />India</p>
-              </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Socials</div>
-                <div className="flex gap-3">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-acid px-3 py-1 font-display text-sm uppercase">IG</a>
-                  <a href="https://twitter.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-paper px-3 py-1 font-display text-sm uppercase">X</a>
-                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-hot px-3 py-1 font-display text-sm uppercase text-paper">YT</a>
-                </div>
+              <div className="mt-2 flex flex-wrap gap-3">
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-acid px-3 py-1 font-display text-sm uppercase">IG</a>
+                <a href="https://twitter.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-paper px-3 py-1 font-display text-sm uppercase">X</a>
+                <a href="https://youtube.com" target="_blank" rel="noreferrer" className="brut-border brut-shadow-sm bg-hot px-3 py-1 font-display text-sm uppercase text-paper">YT</a>
               </div>
             </div>
-          </div>
 
-          {/* Form */}
-          <div className="bg-acid p-10 sm:p-14">
-            <div className="font-mono text-xs uppercase tracking-widest">§ Or write to us</div>
-            <h2 className="mt-3 font-display text-4xl uppercase">Drop a Note</h2>
+            {/* right: form as a tilted card */}
+            <div className="relative">
+              <div className="absolute -top-3 left-10 z-10 h-7 w-24 bg-hot/60 brut-border" style={{ transform: "rotate(-6deg)" }} />
+              <div className="brut-border brut-shadow bg-acid p-8 sm:p-10" style={{ transform: "rotate(0.6deg)" }}>
+                <div className="font-mono text-xs uppercase tracking-widest">// drop a note</div>
+                <h2 className="mt-2 font-display text-4xl uppercase">Write to us.</h2>
 
-            {sent ? (
-              <div className="mt-10 brut-border bg-paper p-8 text-center">
-                <div className="font-display text-3xl uppercase">Got it ✺</div>
-                <p className="mt-3 font-serif text-lg">We'll write back within 48 hours. Usually sooner. Sometimes loudly.</p>
+                {sent ? (
+                  <div className="mt-8 brut-border bg-paper p-8 text-center stamp">
+                    <div className="font-display text-3xl uppercase">Got it ✺</div>
+                    <p className="mt-3 font-serif text-lg">We'll write back within 48 hours. Usually sooner.</p>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                    className="mt-6 space-y-4"
+                  >
+                    <div>
+                      <label className="font-mono text-xs uppercase tracking-widest">Name</label>
+                      <input required type="text" className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
+                    </div>
+                    <div>
+                      <label className="font-mono text-xs uppercase tracking-widest">Email</label>
+                      <input required type="email" className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
+                    </div>
+                    <div>
+                      <label className="font-mono text-xs uppercase tracking-widest">Subject</label>
+                      <select className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono">
+                        <option>General hello</option>
+                        <option>I want to host in my city</option>
+                        <option>Press / Media</option>
+                        <option>Partnership / Sponsorship</option>
+                        <option>Submit work to the gallery</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="font-mono text-xs uppercase tracking-widest">Message</label>
+                      <textarea required rows={4} className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
+                    </div>
+                    <button className="brut-border brut-shadow bg-hot px-8 py-4 font-display text-lg uppercase text-paper hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all">
+                      Send it →
+                    </button>
+                  </form>
+                )}
               </div>
-            ) : (
-              <form
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                className="mt-8 space-y-5"
-              >
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest">Name</label>
-                  <input required type="text" className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
-                </div>
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest">Email</label>
-                  <input required type="email" className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
-                </div>
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest">Subject</label>
-                  <select className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono">
-                    <option>General hello</option>
-                    <option>I want to host in my city</option>
-                    <option>Press / Media</option>
-                    <option>Partnership / Sponsorship</option>
-                    <option>Submit work to the gallery</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest">Message</label>
-                  <textarea required rows={5} className="mt-1 block w-full border-2 border-ink bg-paper px-4 py-3 font-mono focus:bg-ink focus:text-paper focus:outline-none" />
-                </div>
-                <button className="brut-border brut-shadow bg-hot px-8 py-4 font-display text-lg uppercase text-paper hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all">
-                  Send it →
-                </button>
-              </form>
-            )}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section>
-        <div className="mx-auto max-w-[1400px] px-4 py-20 sm:px-8">
-          <div className="mb-10 flex items-end justify-between gap-6 flex-wrap">
-            <h2 className="font-display text-5xl uppercase md:text-7xl">
+      {/* FAQ — taped notes, not a strip */}
+      <section className="relative overflow-hidden py-20">
+        <div className="mx-auto max-w-[1100px] px-4 sm:px-8">
+          <div className="mb-8 max-w-2xl">
+            <div className="font-mono text-xs uppercase tracking-widest text-hot">// faq</div>
+            <h2 className="mt-2 font-display text-5xl uppercase md:text-7xl">
               Asked <span className="text-hot">/</span> Answered
             </h2>
-            <div className="font-mono text-xs uppercase tracking-widest">§ FAQ</div>
           </div>
-          <div className="brut-border divide-y-2 divide-ink bg-paper">
-            {FAQS.map((f) => (
-              <details key={f.q} className="group p-6 open:bg-acid">
+          <div className="space-y-3">
+            {FAQS.map((f, i) => (
+              <details
+                key={f.q}
+                className="group brut-border brut-shadow-sm bg-paper p-5 open:bg-acid"
+                style={{ transform: `rotate(${(i % 2 === 0 ? -0.6 : 0.6)}deg)` }}
+              >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl uppercase">
                   {f.q}
                   <span className="grid h-8 w-8 place-items-center border-2 border-ink bg-paper font-mono text-lg group-open:rotate-45 transition-transform">+</span>
@@ -139,6 +152,9 @@ function ContactPage() {
                 <p className="mt-4 max-w-3xl font-serif text-lg">{f.a}</p>
               </details>
             ))}
+          </div>
+          <div className="mt-10 text-center font-mono text-xs uppercase tracking-widest opacity-60">
+            psst — try the konami code · ↑↑↓↓←→←→ b a
           </div>
         </div>
       </section>

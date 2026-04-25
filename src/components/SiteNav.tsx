@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 
 const links = [
   { to: "/", label: "Home" },
@@ -9,11 +10,24 @@ const links = [
 ] as const;
 
 export function SiteNav() {
+  const [clicks, setClicks] = useState(0);
+  const [boom, setBoom] = useState(false);
+
+  const onLogoClick = () => {
+    const next = clicks + 1;
+    setClicks(next);
+    if (next >= 5) {
+      setBoom(true);
+      setClicks(0);
+      setTimeout(() => setBoom(false), 1800);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 sm:px-8">
-        <Link to="/" className="group flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center bg-ink text-paper font-display text-xl wobble">
+        <Link to="/" className="group flex items-center gap-2" onClick={onLogoClick}>
+          <span className={`grid h-10 w-10 place-items-center bg-ink text-paper font-display text-xl wobble ${boom ? "spin-once" : ""}`}>
             ✺
           </span>
           <span className="font-display text-lg uppercase tracking-tight leading-none">
@@ -44,15 +58,14 @@ export function SiteNav() {
           Join Community →
         </a>
       </div>
-      <div className="ticker-tape overflow-hidden border-t-2 border-ink py-1.5">
-        <div className="marquee-track whitespace-nowrap text-xs">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i} className="px-6">
-              ✺ EST. 2021 ✺ DESIGNERS · ARTISTS · MAKERS ✺ MUMBAI · DELHI · BANGALORE · KOLKATA · CHENNAI · GOA ✺ THIS IS NOT A SAAS ✺ EST. 2021 ✺ DESIGNERS · ARTISTS · MAKERS ✺
-            </span>
-          ))}
+      {boom && (
+        <div className="pointer-events-none fixed left-1/2 top-24 z-[400] -translate-x-1/2">
+          <div className="stamp brut-border bg-acid px-6 py-3" style={{ boxShadow: "6px 6px 0 var(--ink)" }}>
+            <div className="font-display text-2xl uppercase">★ secret tap ★</div>
+            <div className="font-mono text-[10px] uppercase">try the konami code next</div>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

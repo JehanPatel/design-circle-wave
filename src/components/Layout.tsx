@@ -1,5 +1,6 @@
 import { SiteNav } from "./SiteNav";
 import { SiteFooter } from "./SiteFooter";
+import { EasterEggs } from "./EasterEggs";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <SiteNav />
       <main className="flex-1">{children}</main>
       <SiteFooter />
+      <EasterEggs />
     </div>
   );
 }

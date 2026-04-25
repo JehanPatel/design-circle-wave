@@ -180,4 +180,58 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
   }
+
+  /* draggable pill */
+  .pill-drag {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    will-change: transform;
+  }
+  .pill-drag:active { cursor: grabbing; }
+  .pill-drag.is-dragging { z-index: 100; transform-origin: center; }
+
+  @keyframes spin-once {
+    from { transform: rotate(0deg) scale(1.1); }
+    to { transform: rotate(720deg) scale(1); }
+  }
+  .spin-once { animation: spin-once 0.7s ease-out; }
+
+  /* halftone dot pattern overlay */
+  .halftone {
+    background-image: radial-gradient(var(--ink) 1.2px, transparent 1.4px);
+    background-size: 8px 8px;
+  }
+
+  /* zigzag underline */
+  .zigzag {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'><path d='M0 5 L3 1 L6 5 L9 1 L12 5' stroke='%23e8385a' stroke-width='2' fill='none'/></svg>");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    padding-bottom: 6px;
+  }
+
+  /* sticker stamp */
+  @keyframes stamp-in {
+    0% { transform: scale(2) rotate(-30deg); opacity: 0; }
+    60% { transform: scale(0.9) rotate(-12deg); opacity: 1; }
+    100% { transform: scale(1) rotate(-12deg); opacity: 1; }
+  }
+  .stamp { animation: stamp-in 0.5s cubic-bezier(.2,1.4,.4,1) both; }
+
+  /* confetti pieces */
+  @keyframes confetti-fall {
+    0% { transform: translate(0,0) rotate(0); opacity: 1; }
+    100% { transform: translate(var(--cx,0), 100vh) rotate(720deg); opacity: 0; }
+  }
+  .confetti { animation: confetti-fall 1.8s ease-in forwards; }
+
+  @keyframes shake {
+    0%,100% { transform: translate(0,0) rotate(0); }
+    20% { transform: translate(-3px,2px) rotate(-1deg); }
+    40% { transform: translate(3px,-2px) rotate(1deg); }
+    60% { transform: translate(-2px,-2px) rotate(-1deg); }
+    80% { transform: translate(2px,2px) rotate(1deg); }
+  }
+  .shake-it { animation: shake 0.4s ease-in-out; }
 }
