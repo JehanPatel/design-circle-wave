@@ -19,12 +19,13 @@ export const Route = createFileRoute("/events")({
 function EventsPage() {
   return (
     <Layout>
-      <section className="border-b-2 border-ink bg-hot text-paper">
-        <div className="mx-auto max-w-[1400px] px-4 py-20 sm:px-8">
-          <div className="font-mono text-xs uppercase tracking-widest text-acid">§ Events · Live calendar</div>
-          <h1 className="mt-4 font-display text-[15vw] leading-[0.85] md:text-[10vw]">
+      <section className="relative overflow-hidden py-16">
+        <div className="halftone absolute -right-20 top-10 h-[400px] w-[400px] rounded-full opacity-20" />
+        <div className="relative mx-auto max-w-[1400px] px-4 sm:px-8">
+          <div className="font-mono text-xs uppercase tracking-widest text-hot">// live calendar</div>
+          <h1 className="mt-3 font-display text-[14vw] leading-[0.85] md:text-[9rem]">
             Show up.<br />
-            <span className="font-serif italic normal-case">Eat snacks.</span><br />
+            <span className="font-serif italic normal-case text-hot">Eat snacks.</span><br />
             Make friends.
           </h1>
           <p className="mt-6 max-w-2xl font-serif text-2xl">
@@ -33,14 +34,25 @@ function EventsPage() {
         </div>
       </section>
 
-      <section className="border-b-2 border-ink">
-        <div className="brut-border-0 relative w-full">
-          <iframe
-            src={EVENTS_EMBED_URL}
-            title="Events calendar"
-            className="block h-[80vh] w-full border-0"
-            loading="lazy"
-          />
+      <section className="relative py-8">
+        <div className="mx-auto max-w-[1300px] px-4 sm:px-8">
+          {/* taped polaroid frame */}
+          <div className="relative">
+            <div className="absolute -top-3 left-1/3 z-10 h-7 w-24 bg-acid/70 brut-border" style={{ transform: "rotate(-5deg)" }} />
+            <div className="absolute -top-3 right-1/3 z-10 h-7 w-24 bg-hot/60 brut-border" style={{ transform: "rotate(6deg)" }} />
+            <div className="brut-border brut-shadow bg-paper p-3 md:p-4" style={{ transform: "rotate(-0.4deg)" }}>
+              <iframe
+                src={EVENTS_EMBED_URL}
+                title="Events calendar"
+                className="block h-[80vh] w-full border-2 border-ink"
+                loading="lazy"
+              />
+              <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+                <span>// powered by your willingness to show up</span>
+                <span className="text-hot">★ rsvp early · we feed everyone</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
