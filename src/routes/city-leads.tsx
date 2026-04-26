@@ -227,7 +227,7 @@ function CityLeadsPage() {
           <p className="mx-auto mt-6 max-w-2xl font-serif text-xl text-paper/80">
             All it takes is hosting one meetup. We'll send you the playbook, the budget, the stickers.
           </p>
-          <a href="mailto:leads@thedesignspace.in" className="mt-10 inline-block brut-border brut-shadow bg-hot px-10 py-5 font-display text-xl uppercase text-paper hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
+            <a href="mailto:under25designspace@gmail.com" className="mt-10 inline-block brut-border brut-shadow bg-hot px-10 py-5 font-display text-xl uppercase text-paper hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
             Apply to lead your city →
           </a>
         </div>

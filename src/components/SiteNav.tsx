@@ -4,7 +4,6 @@ import { useState } from "react";
 const links = [
   { to: "/", label: "Home" },
   { to: "/events", label: "Events" },
-  { to: "/city-leads", label: "City Leads" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -27,9 +26,7 @@ export function SiteNav() {
     <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <Link to="/" className="group flex items-center gap-2" onClick={onLogoClick}>
-          <span className={`grid h-10 w-10 place-items-center bg-ink text-paper font-display text-xl wobble ${boom ? "spin-once" : ""}`}>
-            ✺
-          </span>
+          <img src="/logo.png" alt="The Design Space" className={`h-10 w-10 object-contain wobble ${boom ? "spin-once" : ""}`} />
           <span className="font-display text-lg uppercase tracking-tight leading-none">
             The Design<br />Space<span className="text-hot">.</span>
           </span>
@@ -50,7 +47,7 @@ export function SiteNav() {
         </nav>
 
         <a
-          href="https://chat.whatsapp.com/"
+          href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta"
           target="_blank"
           rel="noreferrer"
           className="brut-border brut-shadow-sm bg-acid px-4 py-2 font-display text-sm uppercase text-ink hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"

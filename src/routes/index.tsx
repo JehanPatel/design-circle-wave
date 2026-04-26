@@ -79,7 +79,7 @@ function HomePage() {
               Real-world art & design community for Indian creatives who refuse to be quiet, polite, or generic.
             </p>
             <div className="pointer-events-auto mt-8 flex flex-wrap justify-center gap-4">
-              <a href="https://chat.whatsapp.com/" target="_blank" rel="noreferrer"
+              <a href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta" target="_blank" rel="noreferrer"
                 className="brut-border brut-shadow bg-hot px-8 py-4 font-display text-lg uppercase text-paper hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all">
                 Join the Community →
               </a>
@@ -105,7 +105,7 @@ function HomePage() {
             Real-world art & design community for Indian creatives who refuse to be quiet.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href="https://chat.whatsapp.com/" className="brut-border brut-shadow-sm bg-hot px-6 py-3 font-display text-sm uppercase text-paper">Join →</a>
+            <a href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta" className="brut-border brut-shadow-sm bg-hot px-6 py-3 font-display text-sm uppercase text-paper">Join →</a>
             <Link to="/events" className="brut-border brut-shadow-sm bg-paper px-6 py-3 font-display text-sm uppercase">Events</Link>
           </div>
         </div>
@@ -194,7 +194,7 @@ function HomePage() {
               <div className="brut-border relative aspect-video w-full overflow-hidden bg-ink">
                 <iframe
                   className="h-full w-full"
-                  src="https://www.youtube.com/embed/YnOiYWfk5DQ"
+                  src="https://www.youtube.com/embed/dLMlAkYLhC0"
                   title="The Design Space"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -251,7 +251,7 @@ function HomePage() {
             Stop lurking.<br />
             <span className="text-hot italic font-serif normal-case">Start showing up.</span>
           </h2>
-          <a href="https://chat.whatsapp.com/" target="_blank" rel="noreferrer"
+          <a href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta" target="_blank" rel="noreferrer"
             className="mt-12 inline-block brut-border brut-shadow bg-acid px-12 py-6 font-display text-2xl uppercase text-ink hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
             Join the Community →
           </a>

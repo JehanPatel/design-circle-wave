@@ -5,8 +5,11 @@ export function SiteFooter() {
     <footer className="relative mt-24 border-t-2 border-ink bg-ink text-paper">
       <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-16 sm:px-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <div className="font-display text-4xl uppercase leading-none">
-            The Design<br />Space<span className="text-hot">.</span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="The Design Space" className="h-12 w-12 object-contain" />
+            <div className="font-display text-4xl uppercase leading-none">
+              The Design<br />Space<span className="text-hot">.</span>
+            </div>
           </div>
           <p className="mt-4 max-w-xs font-serif text-lg italic text-paper/80">
             India's loudest room for designers, artists & weird makers. We meet on WhatsApp, in basements, on rooftops.
@@ -27,17 +30,17 @@ export function SiteFooter() {
         <div>
           <h4 className="mb-3 font-mono text-xs uppercase tracking-widest text-hot">Stalk Us</h4>
           <ul className="space-y-2 font-display uppercase">
-            <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-acid">Instagram</a></li>
-            <li><a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-acid">Twitter / X</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-acid">YouTube</a></li>
-            <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-acid">LinkedIn</a></li>
+            <li><a href="https://instagram.com/thedesignspace.in" target="_blank" rel="noreferrer" className="hover:text-acid">Instagram</a></li>
+            <li><a href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta" target="_blank" rel="noreferrer" className="hover:text-acid">WhatsApp</a></li>
+            <li><a href="https://www.youtube.com/@thedesignspacein" target="_blank" rel="noreferrer" className="hover:text-acid">YouTube</a></li>
+            <li><a href="https://www.linkedin.com/company/thedesignspacein/" target="_blank" rel="noreferrer" className="hover:text-acid">LinkedIn</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="mb-3 font-mono text-xs uppercase tracking-widest text-hot">Whisper</h4>
-          <p className="font-mono text-sm text-paper/80">hello@<br />thedesignspace.in</p>
-          <p className="mt-3 font-mono text-sm text-paper/80">Mumbai HQ<br />everywhere else</p>
+          <p className="font-mono text-sm text-paper/80">under25designspace@gmail.com</p>
+          <p className="mt-3 font-mono text-sm text-paper/80">No physical office<br />community across India</p>
         </div>
       </div>
 
