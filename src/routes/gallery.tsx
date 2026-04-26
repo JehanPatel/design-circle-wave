@@ -16,7 +16,7 @@ export const Route = createFileRoute("/gallery")({
 });
 
 type Cat = "illustration" | "type" | "photo" | "product" | "event" | "riso";
-type Item = { id: number; creator: string; category: Cat; src: string; alt: string };
+type Item = { id: number; creator: string; category: Cat; src: string; srcSet?: string; width: number; height: number; alt: string };
 
 const CATS: { id: "all" | Cat; label: string; color: string; x: number; y: number; r: number }[] = [
   { id: "all", label: "All", color: "bg-ink text-paper", x: 20, y: 10, r: -4 },
@@ -28,26 +28,33 @@ const CATS: { id: "all" | Cat; label: string; color: string; x: number; y: numbe
   { id: "riso", label: "Riso", color: "bg-hot text-paper", x: 940, y: 5, r: -5 },
 ];
 
-const GALLERY_ITEMS: Item[] = [
-  { id: 1, creator: "Aanya Kapoor", category: "type", src: "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=900", alt: "Type specimen" },
-  { id: 2, creator: "Rohan Iyer", category: "illustration", src: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900", alt: "Illustration" },
-  { id: 3, creator: "Meher Sethi", category: "riso", src: "https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=900", alt: "Riso print" },
-  { id: 4, creator: "Kabir Banerjee", category: "photo", src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=900", alt: "Street photo" },
-  { id: 5, creator: "Tara Pillai", category: "product", src: "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=900", alt: "Ceramic" },
-  { id: 6, creator: "Veer Joshi", category: "event", src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900", alt: "Meetup" },
-  { id: 7, creator: "Nia D'Souza", category: "illustration", src: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=900", alt: "Pattern" },
-  { id: 8, creator: "Ishaan Reddy", category: "type", src: "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=900", alt: "Lettering" },
-  { id: 9, creator: "Saanvi Nair", category: "event", src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900", alt: "Studio crawl" },
-  { id: 10, creator: "Dev Malhotra", category: "photo", src: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900", alt: "Architecture" },
-  { id: 11, creator: "Anika Bose", category: "riso", src: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=900", alt: "Riso poster" },
-  { id: 12, creator: "Pooja Krishnan", category: "type", src: "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=900", alt: "Sign painting" },
-  { id: 13, creator: "Arjun Mehta", category: "event", src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900", alt: "Talk night" },
-  { id: 14, creator: "Yuvraj Singh", category: "illustration", src: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=900", alt: "Sketch" },
-  { id: 15, creator: "Aanya Kapoor", category: "product", src: "https://images.unsplash.com/photo-1606293459209-a83bbacb33df?w=900", alt: "Zine" },
-  { id: 16, creator: "Rohan Iyer", category: "photo", src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?w=900", alt: "Studio" },
-  { id: 17, creator: "Meher Sethi", category: "illustration", src: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=900", alt: "Painting" },
-  { id: 18, creator: "Tara Pillai", category: "riso", src: "https://images.unsplash.com/photo-1604881991720-f91add269bed?w=900", alt: "Risograph" },
-];
+const OPTIMIZED_GALLERY_ASSETS = [
+  { src: "/gallery/lg-01.jpg", srcSet: "/gallery/sm-01.jpg 640w, /gallery/lg-01.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 1" },
+  { src: "/gallery/lg-02.jpg", srcSet: "/gallery/sm-02.jpg 640w, /gallery/lg-02.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 2" },
+  { src: "/gallery/lg-03.jpg", srcSet: "/gallery/sm-03.jpg 640w, /gallery/lg-03.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 3" },
+  { src: "/gallery/lg-04.jpg", srcSet: "/gallery/sm-04.jpg 640w, /gallery/lg-04.jpg 1400w", width: 1400, height: 787, alt: "Design Space gallery photo 4" },
+  { src: "/gallery/lg-05.jpg", srcSet: "/gallery/sm-05.jpg 640w, /gallery/lg-05.jpg 1400w", width: 1400, height: 1866, alt: "Design Space gallery photo 5" },
+  { src: "/gallery/lg-06.jpg", srcSet: "/gallery/sm-06.jpg 640w, /gallery/lg-06.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 6" },
+  { src: "/gallery/lg-07.jpg", srcSet: "/gallery/sm-07.jpg 640w, /gallery/lg-07.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 7" },
+  { src: "/gallery/lg-08.jpg", srcSet: "/gallery/sm-08.jpg 640w, /gallery/lg-08.jpg 1400w", width: 1400, height: 687, alt: "Design Space gallery photo 8" },
+  { src: "/gallery/lg-09.jpg", srcSet: "/gallery/sm-09.jpg 640w, /gallery/lg-09.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 9" },
+  { src: "/gallery/lg-10.jpg", srcSet: "/gallery/sm-10.jpg 640w, /gallery/lg-10.jpg 1400w", width: 1400, height: 1868, alt: "Design Space gallery photo 10" },
+  { src: "/gallery/lg-11.jpg", srcSet: "/gallery/sm-11.jpg 640w, /gallery/lg-11.jpg 1400w", width: 1400, height: 1050, alt: "Design Space gallery photo 11" },
+  { src: "/gallery/lg-12.jpg", srcSet: "/gallery/sm-12.jpg 640w, /gallery/lg-12.jpg 1400w", width: 1400, height: 1866, alt: "Design Space gallery photo 12" },
+] as const;
+
+const ROTATING_CATS: Cat[] = ["event", "photo", "illustration", "type", "product", "riso"];
+
+const GALLERY_ITEMS: Item[] = OPTIMIZED_GALLERY_ASSETS.map((asset, idx) => ({
+  id: idx + 1,
+  creator: "Design Space Community",
+  category: ROTATING_CATS[idx % ROTATING_CATS.length],
+  src: asset.src,
+  srcSet: asset.srcSet,
+  width: asset.width,
+  height: asset.height,
+  alt: asset.alt,
+}));
 
 function GalleryPage() {
   const [cat, setCat] = useState<"all" | Cat>("all");
@@ -123,8 +130,13 @@ function GalleryPage() {
                 >
                   <img
                     src={i.src}
+                    srcSet={i.srcSet}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     alt={i.alt}
+                    width={i.width}
+                    height={i.height}
                     loading="lazy"
+                    decoding="async"
                     className="block w-full transition-transform duration-500 group-hover:scale-105"
                   />
                   <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-ink/90 p-4 text-paper transition-transform duration-300 group-hover:translate-y-0">
@@ -154,7 +166,7 @@ function GalleryPage() {
           <p className="mx-auto mt-6 max-w-xl font-serif text-xl">
             We curate fortnightly. Drop work you're proud of, work-in-progress, or that thing your mum doesn't get.
           </p>
-          <a href="mailto:wall@thedesignspace.in" className="mt-10 inline-block brut-border brut-shadow bg-paper px-10 py-5 font-display text-xl uppercase text-ink hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
+          <a href="https://chat.whatsapp.com/HGeyxHBttEK9sKHmHeb8ta" target="_blank" rel="noreferrer" className="mt-10 inline-block brut-border brut-shadow bg-paper px-10 py-5 font-display text-xl uppercase text-ink hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
             Submit your work →
           </a>
         </div>
